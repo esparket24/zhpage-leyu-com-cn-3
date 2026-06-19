@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐鱼体育 – 专业体育赛事信息平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #fbfbfa;
+            color: #1e1e1e;
+            line-height: 1.65;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 72px 0 48px;
+            border-bottom: 1px solid #e8e7e4;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #111;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            max-width: 580px;
+        }
+
+        .hero .meta {
+            margin-top: 28px;
+            font-size: 0.9rem;
+            color: #777;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero .meta span {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* Sections */
+        section {
+            padding: 48px 0;
+            border-bottom: 1px solid #edece9;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 520;
+            letter-spacing: -0.01em;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin: 28px 0 10px;
+            color: #222;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: #3a3a3a;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px 36px;
+            margin: 18px 0 8px;
+        }
+
+        .feature-item {
+            border-left: 3px solid #d4d1cc;
+            padding-left: 16px;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 550;
+            font-size: 1.02rem;
+            margin-bottom: 4px;
+            color: #111;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* FAQ summary */
+        .faq-list {
+            list-style: none;
+            margin: 16px 0 6px;
+        }
+
+        .faq-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid #efeeeb;
+        }
+
+        .faq-list li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #1e1e1e;
+        }
+
+        .faq-a {
+            font-size: 0.95rem;
+            color: #5a5a5a;
+        }
+
+        /* Link */
+        a {
+            color: #2d5a8e;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(45, 90, 142, 0.25);
+            transition: border-color 0.2s;
+        }
+
+        a:hover {
+            border-bottom-color: #2d5a8e;
+        }
+
+        .footer-links {
+            padding: 32px 0 56px;
+            font-size: 0.9rem;
+            color: #6a6a6a;
+            border-top: 1px solid #edece9;
+        }
+
+        .footer-links p {
+            margin-bottom: 6px;
+        }
+
+        .footer-links a {
+            color: #3a3a3a;
+            border-bottom: 1px solid #cbcbcb;
+            margin: 0 2px;
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: #3a3a3a;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .hero {
+                padding: 48px 0 32px;
+            }
+
+            section {
+                padding: 32px 0;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero .subhead {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>体育赛事资讯 · 数据 · 分析</h1>
+            <p class="subhead">
+                从主流联赛到新兴赛事，<a href="https://zhpage-leyu.com.cn">乐鱼体育</a> 致力于提供结构化的赛程、实时比分、球队数据与背景情报，帮助用户快速理解比赛脉络。
+            </p>
+            <div class="meta">
+                <span>覆盖 20+ 联赛</span>
+                <span>数据更新频率 ≤ 2 分钟</span>
+                <span>赛事雷达 · 深度统计</span>
+            </div>
+        </div>
+
+        <!-- 优势区：数据维度 -->
+        <section>
+            <h2>多维数据与信息整合</h2>
+            <p>体育赛事信息平台的核心价值在于及时、准确与结构清晰。围绕这三个原则，<a href="https://zhpage-leyu.com.cn">乐鱼体育</a> 建立了从基础赛程到进阶统计的信息层。</p>
+            <div class="grid-2">
+                <div class="feature-item">
+                    <strong>赛程与赛果</strong>
+                    <span>覆盖欧洲、南美、亚洲主流联赛及杯赛，支持按日期、联赛、球队筛选。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>实时数据流</strong>
+                    <span>比分、控球率、射门、角球等关键事件每 90 秒更新，保留历史快照。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>球队 & 球员档案</strong>
+                    <span>阵容列表、赛季数据、近期状态走势，辅助横向对比与趋势观察。</span>
+                </div>
+                <div class="feature-item">
+                    <strong>战术统计摘要</strong>
+                    <span>传球分布、进攻区域、防守动作等细粒度数据，用于赛后复盘。</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 说明区：使用场景 -->
+        <section>
+            <h2>信息获取与决策参考</h2>
+            <p>无论是赛前查阅对阵记录，还是赛后分析统计数据，结构化的信息都能提供有效参考。以下为典型使用方式：</p>
+            <ul style="list-style: none; margin: 8px 0 12px;">
+                <li style="margin-bottom: 10px;">— 浏览当日赛程，筛选关注联赛，获取开赛时间与主客队信息。</li>
+                <li style="margin-bottom: 10px;">— 比赛进行中查看实时数据面板，了解控球、射门、角球等动态。</li>
+                <li style="margin-bottom: 10px;">— 赛后查阅球队技术统计、赛季累计数据及近期走势图。</li>
+                <li style="margin-bottom: 10px;">— 利用数据对比功能，辅助判断球队状态与历史交锋模式。</li>
+            </ul>
+            <p style="margin-top: 12px;">以上功能均基于公开赛事数据整理，<a href="https://zhpage-leyu.com.cn">乐鱼体育</a> 不对比赛结果做任何预测或承诺。</p>
+        </section>
+
+        <!-- FAQ 摘要 -->
+        <section>
+            <h2>常见说明</h2>
+            <ul class="faq-list">
+                <li>
+                    <div class="faq-q">数据来源是什么？</div>
+                    <div class="faq-a">聚合多家体育数据服务商及公开赛事信息，经交叉校验后呈现。</div>
+                </li>
+                <li>
+                    <div class="faq-q">是否覆盖低级别联赛？</div>
+                    <div class="faq-a">以顶级及次级联赛为主，部分第三级别联赛及杯赛视数据可用性而定。</div>
+                </li>
+                <li>
+                    <div class="faq-q">历史数据保留多久？</div>
+                    <div class="faq-a">最近 5 个赛季的完整赛程、比分及球队统计数据均可查询。</div>
+                </li>
+                <li>
+                    <div class="faq-q">信息更新频率如何？</div>
+                    <div class="faq-a">赛程信息提前发布并持续修正；实时数据每 90 秒轮询更新。</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 底部链接 -->
+        <div class="footer-links">
+            <p>了解更多关于赛事信息整合与数据查询，请访问 <a href="https://zhpage-leyu.com.cn">乐鱼体育</a>。</p>
+            <p style="margin-top: 8px; color: #8a8a8a; font-size: 0.85rem;">本页仅作信息介绍，不构成任何竞技建议。</p>
+        </div>
+    </div>
+</body>
+</html>
