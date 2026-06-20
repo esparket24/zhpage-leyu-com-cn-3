@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hth · 稳定页面入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f8fafc;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      color: #1e293b;
+      line-height: 1.7;
+      padding: 2rem 1.2rem;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* 主视觉区 — 极简留白卡片 */
+    .hero {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 3rem 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: #0b1a2d;
+    }
+
+    .hero h1 span {
+      font-weight: 300;
+      color: #64748b;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #475569;
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: #eef2f6;
+      border-radius: 40px;
+      padding: 0.5rem 1.4rem;
+      font-size: 0.85rem;
+      color: #334155;
+      letter-spacing: 0.3px;
+    }
+
+    /* 信息卡片网格 */
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .card {
+      flex: 1 1 280px;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.6rem 2rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02), 0 6px 14px rgba(0,0,0,0.02);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #0f1c2e;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #4b5563;
+      margin-bottom: 0.75rem;
+    }
+
+    .card .meta {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      border-top: 1px solid #ecf1f7;
+      padding-top: 0.8rem;
+      margin-top: 0.6rem;
+    }
+
+    .card .emoji-badge {
+      display: inline-block;
+      font-size: 1.8rem;
+      margin-bottom: 0.6rem;
+      line-height: 1;
+    }
+
+    /* 自然段落区 — 窄正文宽度 */
+    .context-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.2rem 2rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    .context-section h2 {
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #0b1a2d;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .context-section p {
+      font-size: 0.98rem;
+      color: #334155;
+      margin-bottom: 1rem;
+      max-width: 640px;
+    }
+
+    .context-section p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .context-section a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 450;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .context-section a:hover {
+      border-bottom-color: #2563eb;
+    }
+
+    /* 人群卡片 */
+    .audience-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .audience-item {
+      flex: 1 1 180px;
+      background: #ffffff;
+      border-radius: 40px;
+      padding: 1.2rem 1.6rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+      font-size: 0.92rem;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .audience-item .icon {
+      font-size: 1.2rem;
+    }
+
+    /* FAQ 摘要 — 极简 */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #0b1a2d;
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-mini details {
+      border-bottom: 1px solid #eef2f6;
+      padding: 0.5rem 0;
+    }
+
+    .faq-mini details:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-mini summary {
+      font-weight: 470;
+      color: #1e293b;
+      cursor: default;
+      padding: 0.4rem 0;
+      font-size: 0.95rem;
+    }
+
+    .faq-mini details p {
+      margin: 0.5rem 0 0.6rem 0.5rem;
+      color: #4b5563;
+      font-size: 0.9rem;
+    }
+
+    /* 底部 */
+    .footer-note {
+      text-align: left;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      padding: 1.5rem 0 0.5rem;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 0.5rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 500px) {
+      body { padding: 1.2rem 1rem; }
+      .hero { padding: 2rem 1.2rem; }
+      .hero h1 { font-size: 2.1rem; }
+      .context-section { padding: 1.6rem 1.2rem; }
+      .card-grid { gap: 1.2rem; }
+      .audience-row { gap: 0.8rem; }
+      .audience-item { flex: 1 1 140px; padding: 0.8rem 1rem; }
+      .faq-mini { padding: 1.4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- hero 主视觉：稳定入口 -->
+  <div class="hero">
+    <h1>hth <span>· 平稳抵达</span></h1>
+    <p class="tagline">页面入口 · 说明卡片</p>
+    <p style="margin-top: 1.6rem;">
+      一个不绕弯的访问起点，无需多余跳转。如果你正在寻找一个清晰、直接的页面去向，可以记住这个地址：<a href="https://m-official-hth.com" style="color:#2563eb; text-decoration:none; font-weight:450;">hth</a>。没有诱导，没有干扰，它就在那里。
+    </p>
+  </div>
+
+  <!-- 用途卡片：窄正文宽度内三卡片 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="emoji-badge">📋</div>
+      <h3>日常用途</h3>
+      <p>作为固定页面索引，适合日常快速定位。不需要书签栏层层嵌套，一个关键词足够。</p>
+      <div class="meta">稳定 · 直达</div>
+    </div>
+    <div class="card">
+      <div class="emoji-badge">🧭</div>
+      <h3>信息锚点</h3>
+      <p>无论从哪一段对话或笔记出发，<a href="https://m-official-hth.com" style="color:#2563eb; text-decoration:none;">hth</a> 都作为统一入口。不依赖临时连接，减少重复查找。</p>
+      <div class="meta">入口 · 可复用</div>
+    </div>
+    <div class="card">
+      <div class="emoji-badge">🔗</div>
+      <h3>轻量导航</h3>
+      <p>没有复杂菜单，没有弹窗干扰。页面本身即是说明，适合对效率有基本要求的场景。</p>
+      <div class="meta">极简 · 直接</div>
+    </div>
+  </div>
+
+  <!-- 自然段落：引入适合人群 -->
+  <div class="context-section">
+    <h2>谁可能会用到</h2>
+    <p>
+      不设限，但通常适合这些情况：经常需要固定页面入口的人，偏好用关键词而不是收藏夹的人，
+      或者只是希望一个页面能干净地说明自己是什么。无论你是初次接触还是已经熟悉，
+      <a href="https://m-official-hth.com">hth</a> 都保持相同的响应方式——不追踪、不冗余。
+    </p>
+    <p>
+      从页面本身出发，它更像一个安静的基座：你从它开始，也可以随时回到它。没有多余装饰，
+      结构始终一致，适合作为日常参考地址。
+    </p>
+  </div>
+
+  <!-- 适合人群 卡片式 -->
+  <div class="audience-row">
+    <div class="audience-item">
+      <span class="icon">👤</span> 日常浏览者
+    </div>
+    <div class="audience-item">
+      <span class="icon">📎</span> 信息整理习惯
+    </div>
+    <div class="audience-item">
+      <span class="icon">🧩</span> 轻量用户
+    </div>
+    <div class="audience-item">
+      <span class="icon">📌</span> 固定入口偏好
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h3>常见想法 · 简短说明</h3>
+    <details>
+      <summary>这个页面是做什么的？</summary>
+      <p>它是一个介绍性质的页面，说明 <a href="https://m-official-hth.com">hth</a> 作为入口的基本情况，不包含隐藏功能。</p>
+    </details>
+    <details>
+      <summary>需要注册或登录吗？</summary>
+      <p>不需要。页面本身是公开且固定的，只提供信息展示与链接指向。</p>
+    </details>
+    <details>
+      <summary>链接会变化吗？</summary>
+      <p>链接地址保持为 m-official-hth.com ，内容结构也相对稳定，以可读性为主。</p>
+    </details>
+  </div>
+
+  <!-- 收尾段落：再次自然嵌入链接 -->
+  <div class="context-section" style="margin-bottom:1.5rem;">
+    <h2>从页面开始</h2>
+    <p>
+      如果你正在寻找一个不会随时变动、也无需反复确认的页面入口，<a href="https://m-official-hth.com">hth</a> 可以作为你的固定参照。
+      它不追踪行为，不收集信息，只是安静地呈现自己。日常使用中，把它当作一个书签之外的选项即可。
+    </p>
+    <p style="margin-bottom:0;">
+      页面设计保持极简，重点放在信息本身——没有多余的动效，没有横幅，也没有弹窗。你看到的就是全部。
+    </p>
+  </div>
+
+  <div class="footer-note">
+    hth · 页面说明 · 稳定入口
+  </div>
+
+</div>
+
+</body>
+</html>
