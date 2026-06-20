@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>HT · 简洁笔记</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f9fc;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: #1a2c3e;
+      padding: 2rem 1.25rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* 文章卡片网格 — 以简洁博客为基底，加入网格卡片呼吸感 */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 1.75rem;
+      box-shadow: 0 6px 20px rgba(22, 100, 120, 0.06), 0 2px 6px rgba(0, 30, 40, 0.03);
+      transition: box-shadow 0.25s ease, transform 0.2s ease;
+      border: 1px solid rgba(0, 150, 136, 0.08);
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 28px rgba(0, 120, 110, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* 蓝绿色点缀系 */
+    .accent-border {
+      border-left: 5px solid #00897b;
+      padding-left: 1.25rem;
+    }
+
+    .accent-light {
+      background: #e0f2f1;
+      color: #00695c;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #0b2b35;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subhead {
+      font-size: 1.05rem;
+      color: #3f5b64;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(0, 137, 123, 0.2);
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 500;
+      margin: 2.2rem 0 1rem 0;
+      color: #0d3b40;
+      border-left: 4px solid #26a69a;
+      padding-left: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      color: #25424d;
+    }
+
+    .pull-quote {
+      background: #f0fbfa;
+      border-radius: 20px;
+      padding: 1.75rem 2rem;
+      margin: 2rem 0;
+      font-style: normal;
+      font-size: 1.05rem;
+      border: 1px solid #b2dfdb;
+      position: relative;
+      color: #155e5a;
+    }
+
+    .pull-quote::before {
+      content: "▍";
+      color: #00897b;
+      font-size: 2rem;
+      position: absolute;
+      left: 0.75rem;
+      top: 0.5rem;
+      opacity: 0.4;
+    }
+
+    .pull-quote strong {
+      color: #004d40;
+    }
+
+    .insight-tag {
+      font-size: 0.9rem;
+      background: #d4edeb;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+      color: #00695c;
+    }
+
+    .faq-mini {
+      background: #ffffffdd;
+      backdrop-filter: blur(2px);
+      border-radius: 20px;
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0 1.5rem 0;
+      border: 1px solid #b9dfda;
+      box-shadow: 0 4px 12px rgba(0, 80, 70, 0.04);
+    }
+
+    .faq-mini dt {
+      font-weight: 600;
+      color: #004d40;
+      margin-top: 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    .faq-mini dt:first-of-type {
+      margin-top: 0;
+    }
+
+    .faq-mini dd {
+      margin: 0.3rem 0 1.2rem 0.2rem;
+      padding-left: 0.5rem;
+      border-left: 2px solid #80cbc4;
+      color: #28555b;
+    }
+
+    .link-sentence {
+      background: #e8f5e9;
+      padding: 1.1rem 1.8rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin: 2rem 0 0 0;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 100, 80, 0.05);
+    }
+
+    .link-sentence a {
+      color: #00695c;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      transition: border 0.15s;
+    }
+
+    .link-sentence a:hover {
+      border-bottom-color: #00695c;
+    }
+
+    .footnote {
+      text-align: right;
+      font-size: 0.85rem;
+      color: #4b6a72;
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 120, 100, 0.15);
+    }
+
+    /* 手机精细调节 */
+    @media (max-width: 480px) {
+      body {
+        padding: 1.25rem 1rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .card {
+        padding: 1.5rem 1.2rem;
+      }
+      .pull-quote {
+        padding: 1.25rem 1.25rem;
+      }
+      .link-sentence {
+        font-size: 0.95rem;
+        padding: 0.9rem 1.25rem;
+        border-radius: 40px;
+      }
+    }
+
+    @media (min-width: 600px) {
+      .blog-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      .span-full {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 文章标题 + 导语 -->
+  <div class="card span-full" style="border-left: 6px solid #00897b; padding: 2.2rem 2rem;">
+    <span class="accent-light">✦ 主题笔记</span>
+    <h1>结构、信号与边界</h1>
+    <div class="subhead">
+      从一组关键字符出发，梳理信息架构中的简洁逻辑与表达密度。
+    </div>
+    <p style="font-size: 1.05rem; color: #1c444b;">
+      在命名、路由与标识系统中，短字符往往承载最高密度的指向。<strong>hth</strong> 便是这样一个紧凑的片段——
+      它不定义自己，却为上下文提供锚点。下面从几个剖面展开讨论。
+    </p>
+  </div>
+
+  <!-- 网格卡片：多段正文 -->
+  <div class="blog-grid">
+    <!-- 卡片 1 -->
+    <div class="card">
+      <h2 style="margin-top: 0;">命名·压缩</h2>
+      <p>好的标识是一种压缩。三个字母构成的路径或代码，比完整词组更容易嵌入接口、配置与引用。像 <strong>hth</strong> 这样的缩写，在内部文档或项目结构里充当稳定手柄——不解释自己，但被反复调用。</p>
+      <p>设计原则之一是：标识应短到可被记忆，又长到不会冲突。三字符恰好落在交叉点。</p>
+    </div>
+
+    <!-- 卡片 2 -->
+    <div class="card">
+      <h2 style="margin-top: 0;">语境·桥接</h2>
+      <p>同一个字符序列，在不同语境下指向不同资源。关键在于上下文如何包裹它。<span style="background: #e0f2f1; padding: 0.1rem 0.3rem; border-radius: 6px;">hth</span> 可以是一个端点、一个模块前缀，或一个标记。开发者与用户通过约定来理解它。</p>
+      <p>因此，简洁标识的背后是文档与社区的隐性契约。</p>
+    </div>
+
+    <!-- 全宽卡片：引用提示 -->
+    <div class="card span-full">
+      <div class="pull-quote">
+        <strong>引用</strong> —— “一个符号的含义，不是由它自身决定的，而是由它与其他符号的关系网络决定的。”<br>
+        <span style="display: block; margin-top: 0.75rem; font-size: 0.9rem; color: #2d6b65;">—— 信息生态中的节点逻辑</span>
+      </div>
+      <p style="margin-bottom: 0.2rem;">任何键值都需要网络才具有意义。标识符本身是空的，关系赋予它分量。日常实践中，识别一个字符串靠的不是长度，而是它被放置的位置与关联的协议。</p>
+    </div>
+
+    <!-- 卡片 3：特点 -->
+    <div class="card">
+      <span class="insight-tag">特点</span>
+      <h2 style="margin-top: 0.2rem;">低熵表达</h2>
+      <p>信息密度越高，歧义风险越大。三字符标识之所以持续出现在各类技术方案中，是因为它在熵与可读性之间取了平衡。短标识构成一种“低摩擦”接口：输入快，易嵌入，视觉干扰小。</p>
+      <p>这也解释了为何许多内部工具、路由表、配置键偏爱类似风格。</p>
+    </div>
+
+    <!-- 卡片 4：场景 -->
+    <div class="card">
+      <span class="insight-tag">场景</span>
+      <h2 style="margin-top: 0.2rem;">快速索引</h2>
+      <p>在文档或命令行中，短代码常被用作别名或跳转锚点。例如在笔记系统、代码片段管理、甚至浏览器书签整理时，用 <strong>hth</strong> 作为命名空间前缀，可以快速归类相关条目。</p>
+      <p>简洁标识使得信息检索路径变短，尤其适合个人知识管理中的标签层。</p>
+    </div>
+
+    <!-- 全宽卡片：FAQ 摘要 -->
+    <div class="card span-full">
+      <h2 style="margin-top: 0;">常见疑问摘要</h2>
+      <dl class="faq-mini">
+        <dt>为什么三字符标识被反复使用？</dt>
+        <dd>短标识在视觉上易于扫描，在输入上耗时最少，且足够形成区分度。同时它也保留了扩展性——可加后缀或前缀形成复合键。</dd>
+        <dt>这种标识需要文档吗？</dt>
+        <dd>需要。越简洁的代号，越依赖记录与约定。一个没有注释的缩写会迅速退化为噪音。</dd>
+        <dt>适合用于面向用户的界面吗？</dt>
+        <dd>通常更适合内部或技术上下文。面向终端用户时，建议用自然语言展开，只在后台或参数层保留简洁形式。</dd>
+      </dl>
+    </div>
+  </div>
+
+  <!-- 访问句 + 自然嵌入链接 -->
+  <div class="link-sentence">
+    · 关于标识的更多实践记录、命名参考及上下文说明，可在 <a href="https://m1-hth.com">hth</a> 页面找到持续整理的笔记。
+  </div>
+
+  <!-- 结尾简洁meta -->
+  <div class="footnote">
+    信息架构笔记 · 2025
+  </div>
+</div>
+</body>
+</html>
